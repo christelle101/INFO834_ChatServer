@@ -26,7 +26,6 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#roadmap">Progression</a></li>
     <li><a href="#contributing">Contributeurs</a></li>
   </ol>
 </details>
