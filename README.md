@@ -17,6 +17,7 @@
       <a href="#about-the-project">A propos du projet</a>
       <ul>
         <li><a href="#built-with">Technologies utilisées</a></li>
+        <li><a href="#built-with">Versions du projet</a></li>
       </ul>
     </li>
     <li>
