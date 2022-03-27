@@ -55,6 +55,9 @@ Voici les principales fonctionnalités de l'application :
 * [Redis](https://redis.io/)
 <p align="right">(<a href="#top">Retour en haut</a>)</p>
 
+### Versions du projet
+* Branche 'etape1' : version fonctionnelle basée sur le tutoriel Moodle avec un Redis non testé et sans base de données MongoDB. 
+* Branche 'etape2' : version finale
 
 
 <!-- GETTING STARTED -->
