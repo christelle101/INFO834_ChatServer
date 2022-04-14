@@ -20,7 +20,7 @@ exports.catchErrors = (fn) => {
   /*
     MongoDB Validation Error Handler
   
-    Detect if there are mongodb validation errors that we send them nicely back.
+    Detect if there are mongodb validation errors.
   */
   
   exports.mongoseErrors = (err, req, res, next) => {
@@ -39,7 +39,6 @@ exports.catchErrors = (fn) => {
   /*
     Development Error Handler
   
-    In development we show good error messages so if we hit a syntax error or any other previously un-handled error, we can show good info on what happened
   */
   exports.developmentErrors = (err, req, res, next) => {
     err.stack = err.stack || "";
@@ -54,8 +53,6 @@ exports.catchErrors = (fn) => {
   
   /*
     Production Error Handler
-  
-    No stacktraces and error details are leaked to user
   */
   exports.productionErrors = (err, req, res, next) => {
     res.status(err.status || 500).json({
