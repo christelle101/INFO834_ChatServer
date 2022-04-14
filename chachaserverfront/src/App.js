@@ -1,21 +1,21 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LoginPage from "./Pages/LoginPage";
-import RegisterPage from "./Pages/RegisterPage";
-import DashboardPage from "./Pages/DashboardPage";
-import IndexPage from './Pages/IndexPage';
-import ChatroomPage from './Pages/ChatroomPage';
 import io from "socket.io-client";
-import makeToast from './Toaster';
+import makeToast from "./Toaster";
 
-//
-//<Route path="/" element = {<IndexPage exact/>}/>
+import IndexPage from "./Pages/IndexPage";
+import RegisterPage from "./Pages/RegisterPage";
+import LoginPage from "./Pages/LoginPage";
+import DashboardPage from "./Pages/DashboardPage";
+import ChatroomPage from "./Pages/ChatroomPage";
+
+
 
 function App() {
-  const[socket, setSocket] = React.useState(null);
+ const[socket, setSocket] = React.useState(null);
 
   const setupSocket = () => {
-    const token = localStorage.getItem("CC_TOKEN");
+    const token = localStorage.getItem("CC_Token");
     if (token && !socket) {
       const newSocket = io("http://localhost:3000",{
         query: {
@@ -25,7 +25,7 @@ function App() {
 
       newSocket.on("disconnect", () => {
         setSocket(null);
-        setTimeout("error", 3000);
+        setTimeout(setupSocket, 3000);
         makeToast("error", "Socket Disconnected!");
       });
 
@@ -41,24 +41,30 @@ function App() {
     setupSocket();
     //eslint-disable-next-line
   }, []);
-
+  
   return (
   <BrowserRouter>
       <Routes>
-        <Route path="/" element = {<IndexPage/>} exact/>
+        <Route 
+          path="/" 
+          element = {<IndexPage/>} 
+          exact/>
         <Route 
           path="/login" 
-          render = {() => <LoginPage setupSocket = {setupSocket} />}
+          element = {<LoginPage setupSocket={setupSocket}/>}
           exact/>
-        <Route path="/register" element = {<RegisterPage />} exact/>
+        <Route 
+          path="/register" 
+          element = {<RegisterPage/>}
+          exact/>
         <Route 
           path="/dashboard" 
-          render = {() => <DashboardPage socket = {socket} />} 
+          element = {<DashboardPage socket={socket}/>}
           exact/>
         <Route 
-          path="/chatroom/:id" 
-          render = {() => <ChatroomPage socket = {socket} />}
-          exact/>
+          path="/chatroom/:id"
+          element = {<ChatroomPage socket={socket}/>}
+          exact />
       </Routes>
   </BrowserRouter>
   );
