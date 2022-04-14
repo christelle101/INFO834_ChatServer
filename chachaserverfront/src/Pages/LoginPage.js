@@ -1,35 +1,12 @@
 import React from 'react';
 import makeToast from '../Toaster';
 import axios from 'axios';
-//import { useNavigate } from 'react-router-dom';
-
-import {
-    useLocation,
-    useNavigate,
-    useParams
-  } from "react-router-dom";
-  
-  function withRouter(Component) {
-    function ComponentWithRouterProp(props) {
-      let location = useLocation();
-      let navigate = useNavigate();
-      let params = useParams();
-      return (
-        <Component
-          {...props}
-          router={{ location, navigate, params }}
-        />
-      );
-    }
-  
-    return ComponentWithRouterProp;
-  };
+import { useNavigate } from "react-router-dom";
 
 
 const LoginPage = (props) => {
-    
-    //const navigate = useNavigate();
-    //navigate(LoginPage);
+
+    const navigate = useNavigate();
 
     const usernameRef = React.createRef();
     const passwordRef = React.createRef();
@@ -44,11 +21,11 @@ const LoginPage = (props) => {
             password,
         })
         .then((response) => {
-            //console.log(response.data);
             makeToast("success", response.data.message);
             localStorage.setItem("CC_Token", response.data.token);
-            props.history.push("/dashboard");
-            props.setupSocket();
+            navigate("/dashboard");
+            props.setupSocket(); //props.setupSocket
+            console.log("coucou");
         })
         .catch((err) => {
             if (
@@ -86,9 +63,11 @@ const LoginPage = (props) => {
                         ref = {passwordRef}
                     />
                 </div>
-                <button onClick={loginUser}> Se connecter </button>   
+                <button onClick={loginUser}> Se connecter </button>  
+                <button className = "Retour" onClick={() => {navigate("/")}}> Retour </button>
             </div>
     </div>
+
     );
 };
 
