@@ -83,10 +83,15 @@ Il faut tout d'abord s'assurer d'avoir installé les quatres technologies requis
    ```
 3. Se placer dans le répertoire associé au projet
 4. Démarrer MongoDB et une instance de serveur Redis
-5. Lancer la commande
+5. Ouvrir un terminal et se placer dans le répertoire chachaserverFront et tapez la commande suivante
    ```sh
-   node server.js
+   npm start
    ```
+ 6. Attendre qu'une page du navigateur internet s'ouvre. Ensuite, ouvrir un autre terminal et se placer dans le répertoire chachaserver et tapez la commande suivante
+   ```sh
+   npm start
+   ```
+ 7. A vous de jouer! Créez un login et un mot de passe, connectez-vous et commencer à chacher sur notre chachaserver ^_^
 
 <p align="right">(<a href="#top">Retour en haut</a>)</p>
 
