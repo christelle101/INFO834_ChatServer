@@ -3,7 +3,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-//Setup cross origine
+//Setting up cross origine
 app.use(require("cors")());
 
 
@@ -12,7 +12,7 @@ app.use("/user",require("./routes/user"));
 app.use("/chatroom",require("./routes/chatroom"));
 
 
-//Setup Error Handlers
+//Setting up Error Handlers
 const errorsHandlers = require("./handlers/errorHandlers");
 app.use(errorsHandlers.notFound);
 app.use(errorsHandlers.mongoseErrors);
