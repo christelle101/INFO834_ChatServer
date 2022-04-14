@@ -87,8 +87,8 @@ Il faut tout d'abord s'assurer d'avoir installé les quatres technologies requis
    ```sh
    npm start
    ```
- 6. Attendre qu'une page du navigateur internet s'ouvre. 
- 7. Ensuite, ouvrir un autre terminal et se placer dans le répertoire chachaserver et tapez la commande suivante
+6. Attendre qu'une page du navigateur internet s'ouvre. 
+7. Ensuite, ouvrir un autre terminal et se placer dans le répertoire chachaserver et tapez la commande suivante
    ```sh
    npm start
    ```
