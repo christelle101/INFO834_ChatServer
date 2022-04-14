@@ -1,13 +1,19 @@
 import React from "react";
 import axios from "axios";
 import makeToast from "../Toaster";
+import { useNavigate } from "react-router-dom";
 
 
-const RegisterPage = (props) => {
+
+const RegisterPage = () => {
+  
+  const navigate = useNavigate();
+  
   const usernameRef = React.createRef();
   const passwordRef = React.createRef();
 
-  const registerUser = (props) => {
+  //A function that register the user
+  const registerUser = () => {
     const username = usernameRef.current.value;
     const password = passwordRef.current.value;
 
@@ -18,17 +24,17 @@ const RegisterPage = (props) => {
       })
       .then((response) => {
         makeToast("success", response.data.message);
-        props.history.push("/login");
+        navigate("/login");
       })
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
         if (
           err &&
           err.response &&
           err.response.data &&
           err.response.data.message
         )
-          makeToast("error", err.response.data.message);
+        makeToast("error", err.response.data.message);
       });
   };
 
@@ -58,6 +64,7 @@ const RegisterPage = (props) => {
         />
       </div>
       <button onClick={registerUser}> S'enregistrer</button>
+      <button className = "Retour" onClick={() => {navigate("/")}}> Retour </button>
     </div>
   );
 };
