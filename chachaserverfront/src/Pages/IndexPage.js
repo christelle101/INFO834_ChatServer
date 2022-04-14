@@ -1,17 +1,32 @@
-import React from 'react';
+import React from "react";
+import {useNavigate} from "react-router-dom";
+import "../Styles/IndexPageStyle.css";
 
-const IndexPage = (props) => {
-    React.useEffect(() =>{
-        const token = localStorage.getItem("CC_Token");
-        console.log(token);
-        if(!token){
-            props.history.push("/login");
-        } else {
-            props.history.push("/dashboard");
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-    return <div></div>
+const IndexPage = () => {
+    const navigate = useNavigate();
+    const routeChangeLogin = () =>{ 
+        let login = "/login";
+        navigate(login);
+    }
+
+    const routeChangeRegister = () =>{ 
+        let register = "/register";
+        navigate(register);
+    }
+
+
+    return (
+        <div class="nav">
+        <input type="checkbox"/>
+            <span></span>
+            <span></span>
+            <div class="menu">
+            <li><button class = "buttonMenu" onClick={routeChangeLogin}> Se connecter </button></li>
+            <li><button class = "buttonMenu" onClick={routeChangeRegister}> S'enregistrer </button></li>
+            </div>
+            <p> Welcome To ChachaSever ! </p>
+        </div>
+        );
 };
 
 export default IndexPage;
